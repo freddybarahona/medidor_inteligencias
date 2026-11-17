@@ -115,3 +115,12 @@ fun PasswordField(
         }
     )
 }
+
+
+/*
+ServiceLocator  →  AuthRepository  →  ApiClient.auth  →  AuthApi.kt
+       ↑                 ↑
+LoginViewModel      decide Ok / BadCredentials / Error
+       ↑
+LoginForm (LoginActivity)
+*/
