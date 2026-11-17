@@ -33,6 +33,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.medidor_inteligencias.ui.login.LoginViewModel
 import com.example.medidor_inteligencias.ui.theme.Medidor_inteligenciasTheme
 class LoginActivity : ComponentActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,6 +53,8 @@ class LoginActivity : ComponentActivity(){
 
 @Composable
 fun LoginForm(modifier: Modifier = Modifier){
+    val vm: LoginViewModel= viewModel()
+
     // Estado del input (sobrevive a la rotación)
     //el by necesita el get y el set para funcionar
     var correo by rememberSaveable { mutableStateOf("") } //recuerda si giras la pantalla el estado no se pierde
@@ -78,11 +82,12 @@ fun LoginForm(modifier: Modifier = Modifier){
 
         //boton de pase de sesion
         Button(
-            onClick = { /* aquí irá la lógica del login */ },
-            enabled = correo.isNotBlank() && passwordState.text.isNotBlank()
+            onClick = { vm.entrar(correo, passwordState.text.toString()) },
+            enabled = correo.isNotBlank() && passwordState.text.isNotBlank() && !vm.cargando
         ) {
-            Text("Entrar")
+            Text(if (vm.cargando) "Entrando..." else "Entrar")
         }
+        vm.mensaje?.let { Text(it) }
         Text( text = if (correo.isBlank()) "Escribe un correo" else  "Hola, $correo", style = MaterialTheme.typography.bodyLarge)
     }
 }
