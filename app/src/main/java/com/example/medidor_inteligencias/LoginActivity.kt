@@ -99,7 +99,7 @@ fun PasswordField(
         state = state,
         modifier = modifier.fillMaxWidth(),
         label = { Text(label) },
-        placeholder = { Text("Tu contraseña") },
+        placeholder = { Text("hello1234@") },
         textObfuscationMode = if (visible) {
             TextObfuscationMode.Visible
         } else {

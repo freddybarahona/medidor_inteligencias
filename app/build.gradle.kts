@@ -22,7 +22,7 @@ android {
     buildTypes {
         debug {//environment.ts
             // tu PC vista desde el emulador
-            buildConfigField("String", "API_URL", "\"http://10.0.2.2:3000/\"")
+            buildConfigField("String", "API_URL", "\"https://8ce73f45-09dc-484b-bfa7-c0b52520f295.mock.pstmn.io/\"")
             //flag para activar o desactivar el log de http
             buildConfigField("boolean", "LOG_HTTP", "true")
         }
