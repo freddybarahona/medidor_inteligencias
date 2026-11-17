@@ -2,5 +2,7 @@
 plugins {
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.kotlin.compose) apply false
+    // alias del plugin de serializacion de kotlin anadido por mi
+    alias(libs.plugins.kotlin.serialization)
 }
 
